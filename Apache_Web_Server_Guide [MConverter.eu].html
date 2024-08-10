@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.6.4.1 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
+		pre { background: transparent }
+		pre.western { font-family: "Liberation Mono", monospace; font-size: 10pt }
+		pre.cjk { font-family: "NSimSun", monospace; font-size: 10pt }
+		pre.ctl { font-family: "Liberation Mono", monospace; font-size: 10pt }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre class="western">
+Apache Web Server Setup Guide
+=============================
+
+Step 1: Download Apache HTTP Server
+-----------------------------------
+1. Open your web browser and go to the official Apache HTTP Server download page: https://httpd.apache.org/download.cgi
+2. Choose the appropriate version of Apache for your system (32-bit or 64-bit). As of this guide, version 2.4.61 is recommended.
+3. Download the zip file or the installer.
+
+Step 2: Extract or Install Apache
+---------------------------------
+1. If you downloaded the zip file, extract it to a directory of your choice (e.g., C:\Apache24).
+2. If you used the installer, follow the installation prompts, and install Apache to a directory like C:\Apache24.
+
+Step 3: Configure Apache
+------------------------
+1. Navigate to the Apache installation directory (C:\Apache24).
+2. Inside the &quot;conf&quot; folder, find the file named &quot;httpd.conf&quot;. Open it in a text editor (e.g., Notepad).
+3. Look for the line that starts with &quot;#ServerName&quot; and remove the &quot;#&quot; to uncomment it. It should look like this:
+   
+   ServerName localhost:80
+   
+4. Save the changes to httpd.conf and close the editor.
+
+Step 4: Start Apache
+--------------------
+1. Open the Command Prompt with administrator privileges. You can do this by searching for &quot;cmd&quot; in the Start menu, right-clicking on it, and selecting “Run as administrator.”
+2. Navigate to the Apache bin directory by typing the following command:
+   
+   cd C:\Apache24\bin
+   
+3. Start the Apache server by typing:
+   
+   httpd.exe
+   
+4. If everything is configured correctly, Apache should start without errors. You can verify by opening your web browser and typing http://localhost. You should see the Apache default welcome page.
+
+Step 5: Test Your Web Server
+----------------------------
+1. Create an index.html file in the htdocs folder inside the Apache installation directory (C:\Apache24\htdocs).
+2. Open the file in a text editor and add some HTML content, such as:
+
+   &lt;html&gt;
+   &lt;head&gt;&lt;title&gt;My Apache Server&lt;/title&gt;&lt;/head&gt;
+   &lt;body&gt;&lt;h1&gt;Hello, World!&lt;/h1&gt;&lt;/body&gt;
+   &lt;/html&gt;
+   
+3. Save the file and refresh your browser at http://localhost. You should see the &quot;Hello, World!&quot; message.
+
+Step 6: Manage Apache as a Windows Service
+------------------------------------------
+1. To install Apache as a Windows service, open the Command Prompt with administrator privileges and navigate to the bin directory:
+   
+   cd C:\Apache24\bin
+   
+2. Install Apache as a service by typing:
+   
+   httpd.exe -k install
+   
+3. You can now start and stop Apache using the Windows Services management console. Open the Run dialog (Win + R), type services.msc, and press Enter.
+4. Find &quot;Apache2.4&quot; in the list, right-click on it, and select &quot;Start&quot; or &quot;Stop&quot; as needed.
+
+Step 7: Configure Firewall (Optional)
+-------------------------------------
+1. If your server needs to be accessible from other machines, ensure that port 80 (HTTP) is open in your firewall.
+2. Go to the Windows Firewall settings and allow httpd.exe or explicitly open port 80.
+
+Step 8: (Optional) Set Up Virtual Hosts
+---------------------------------------
+1. You can configure multiple sites by editing the httpd-vhosts.conf file in the conf\extra directory.
+2. Open httpd-vhosts.conf in a text editor and add entries like the following:
+
+   &lt;VirtualHost *:80&gt;
+       ServerAdmin webmaster@mywebsite.com
+       DocumentRoot &quot;C:/Apache24/htdocs/mywebsite&quot;
+       ServerName mywebsite.com
+       ErrorLog &quot;logs/mywebsite.com-error.log&quot;
+       CustomLog &quot;logs/mywebsite.com-access.log&quot; common
+   &lt;/VirtualHost&gt;
+   
+3. Restart Apache for the changes to take effect.
+
+Conclusion
+----------
+Your Apache web server is now up and running. You can add more content to your htdocs folder or configure additional settings to suit your needs. Remember to regularly check for updates and maintain your server for security and performance.</pre>
+</body>
+</html>
